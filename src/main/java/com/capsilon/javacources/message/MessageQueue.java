@@ -9,13 +9,10 @@ import java.util.Queue;
 @Component
 public class MessageQueue {
 
-    private Queue<String> queue;
-    private MessageLogger messageLogger;
+    private Queue<String> queue = new LinkedList<>();
 
-    public MessageQueue(@Autowired MessageLogger messageLogger) {
-        this.queue = new LinkedList<>();
-        this.messageLogger = messageLogger;
-    }
+    @Autowired
+    private MessageLogger messageLogger;
 
     public void put(final String value) {
         messageLogger.logMessage("Adding message to queue " + value);
