@@ -1,14 +1,18 @@
 package com.capsilon.javacources.message;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
+@Component
 public class MessageQueue {
 
     private Queue<String> queue;
     private MessageLogger messageLogger;
 
-    public MessageQueue(MessageLogger messageLogger) {
+    public MessageQueue(@Autowired MessageLogger messageLogger) {
         this.queue = new LinkedList<>();
         this.messageLogger = messageLogger;
     }

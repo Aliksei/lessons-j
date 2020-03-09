@@ -1,26 +1,12 @@
 package com.capsilon.javacources.config;
 
 
-import com.capsilon.javacources.message.MessageLogger;
-import com.capsilon.javacources.message.MessageQueue;
-import com.capsilon.javacources.message.MessageSender;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ComponentScan;
 
 
-@Import(StorageConfiguration.class)
+@ComponentScan(value = "com.capsilon.javacources")
 public class ApplicationConfiguration {
 
-    @Bean
-    public MessageLogger messagePrinter() {
-        return new MessageLogger("CONSOLE");
-    }
-
-    @Bean
-    public MessageSender messageSender(@Autowired MessageLogger messageLogger, @Autowired MessageQueue messageQueue) {
-        return new MessageSender(messageLogger, messageQueue);
-    }
 
 
 }
